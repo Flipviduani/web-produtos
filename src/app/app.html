@@ -5,12 +5,36 @@
     Pesquise os produtos através do nome:
   </p>
 
+  @if(mensagem()) {
+  <div class="notificacao">
+    {{ mensagem() }}
+  </div>
+  }
+
   <div>
     <input type="text" placeholder="Digite o nome do produto aqui." [(ngModel)]="nomeProduto" />
     <button (click)="pesquisarProdutos()">
       Pesquisar
     </button>
+    <button class="botao_novoproduto" (click)="novoProduto()">
+      Novo produto
+    </button>
   </div>
+
+  @if(exibirFormulario()){
+  <br />
+  <h4>Cadastrar produtos</h4>
+
+  <div>
+    <input type="text" placeholder="Nome do produto:" [(ngModel)]="produtoSelecionado().nome" />
+    <input type="text" placeholder="Descrição:" [(ngModel)]="produtoSelecionado().descricao" />
+    <input type="text" placeholder="Preco" [(ngModel)]="produtoSelecionado().preco" />
+    <input type="number" min="1" placeholder="Quantidade" [(ngModel)]="produtoSelecionado().quantidade" />
+    <button class="botao_novoproduto" (click)="cadastrarProduto()">Salvar</button>
+    <button (click)="cancelarEdicao()">Cancelar</button>
+  </div>
+
+  }
 
   @if (produtos().length > 0) {
   <table>
@@ -37,7 +61,8 @@
 
         <td>
           <button>Editar</button>
-          <button>Excluir</button>
+          <button (click)="excluirProduto(p.id)">Excluir</button>
+
         </td>
       </tr>
       }

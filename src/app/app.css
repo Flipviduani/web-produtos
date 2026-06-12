@@ -18,7 +18,7 @@
   box-sizing: border-box;
 }
 
-:host > div {
+:host>div {
   width: 100%;
 
   background: rgba(15, 23, 42, 0.92);
@@ -42,7 +42,7 @@ p {
   color: #cbd5e1;
 }
 
-:host > div > div {
+:host>div>div {
   display: flex;
   gap: 12px;
   width: 100%;
@@ -220,11 +220,11 @@ tfoot td {
     padding: 16px;
   }
 
-  :host > div {
+  :host>div {
     padding: 24px;
   }
 
-  :host > div > div {
+  :host>div>div {
     flex-direction: column;
   }
 
@@ -253,4 +253,92 @@ tfoot td {
   tfoot td {
     text-align: left;
   }
+}
+
+.notificacao {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(22, 163, 74, 0.15);
+  color: #bbf7d0;
+
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  border-left: 5px solid #22c55e;
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.18);
+}
+
+/* Ícone antes da mensagem */
+.notificacao::before {
+  content: "✓";
+
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #22c55e;
+  color: #052e16;
+
+  border-radius: 50%;
+
+  font-size: 15px;
+  font-weight: 900;
+}
+
+/* Animação suave ao aparecer */
+.notificacao {
+  animation: aparecerNotificacao 0.35s ease;
+}
+
+@keyframes aparecerNotificacao {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+.botao_novoproduto {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #ffffff;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 14px 22px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+  white-space: nowrap;
+
+  box-shadow: 0 8px 18px rgba(22, 163, 74, 0.22);
+}
+
+.botao_novoproduto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(22, 163, 74, 0.35);
+}
+
+.botao_novoproduto:active {
+  transform: translateY(0);
 }
